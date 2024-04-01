@@ -12,7 +12,7 @@ export default class UsersController {
     return await auth.use('jwt').generate(user)
   }
 
-  async signup({ request, auth }: HttpContext) {
+  async signup({ request }: HttpContext) {
     const { email, password } = await request.validateUsing(userValidator)
     const user = new User()
     await user.fill({ email, password }).save()

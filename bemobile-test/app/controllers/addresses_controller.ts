@@ -7,6 +7,7 @@ export default class AddressesController {
   async store({ request }: HttpContext) {
     const validatedRequest = await request.validateUsing(addressValidator)
     const payload = {
+      client_id: validatedRequest.clientId,
       street: validatedRequest.street,
       state: validatedRequest.state,
       city: validatedRequest.city,

@@ -1,6 +1,6 @@
 import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
-import User from './user.js'
+
 import Client from './clients.js'
 
 export default class Address extends BaseModel {
