@@ -1,0 +1,10 @@
+  mysqldb:
+    container_name: bemobile_db
+    image:
+      mysql:8.3.0
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: bemobile
+      MYSQL_ROOT_PASSWORD: password
