@@ -22,8 +22,18 @@ router.get('/', async () => {
 
 router.post('/clients', [ClientsController, 'store']).use(middleware.auth({ guards: ['jwt'] }))
 router.get('/clients', [ClientsController, 'index']).use(middleware.auth({ guards: ['jwt'] }))
+router.put('/clients/:id', [ClientsController, 'update']).use(middleware.auth({ guards: ['jwt'] }))
+router
+  .delete('/clients/:id', [ClientsController, 'delete'])
+  .use(middleware.auth({ guards: ['jwt'] }))
 
-router.post('/clients/:id/addresses', [ClientsController, 'storeAddress'])
+router
+  .post('/clients/:id/addresses', [ClientsController, 'storeAddress'])
+  .use(middleware.auth({ guards: ['jwt'] }))
+
+router
+  .post('/clients/:id/phones', [ClientsController, 'storePhoneNumber'])
+  .use(middleware.auth({ guards: ['jwt'] }))
 
 router.post('/login', [UsersController, 'login'])
 router.post('/signup', [UsersController, 'signup'])

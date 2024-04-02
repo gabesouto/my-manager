@@ -1,10 +1,14 @@
-import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
 import Address from './addresses.js'
-import type { HasOne } from '@adonisjs/lucid/types/relations'
+import type { HasMany } from '@adonisjs/lucid/types/relations'
+import Phone from './phone.js'
 
 export default class Client extends BaseModel {
-  @hasOne(() => Address)
-  declare profile: HasOne<typeof Address>
+  @hasMany(() => Address)
+  declare address: HasMany<typeof Address>
+
+  @hasMany(() => Phone)
+  declare phone: HasMany<typeof Phone>
 
   @column({ isPrimary: true })
   declare id: number
