@@ -1,4 +1,4 @@
-import type { HttpContext } from '@adonisjs/core/http'
+import { HttpContext } from '@adonisjs/core/http'
 import Client from '../models/clients.js'
 import { clientValidator } from '../validators/client.js'
 import HttpStatus from '../helpers/http_status_enum.js'
@@ -7,7 +7,10 @@ import Address from '../models/addresses.js'
 
 export default class ClientsController {
   async index({ response }: HttpContext) {
-    response.status(HttpStatus.OK).send(await Client.all())
+    const clients = await Client.all()
+    const clientsSorted = clients.sort((a, b) => a.id - b.id)
+
+    response.status(HttpStatus.OK).send(clientsSorted)
   }
 
   async store({ request, response }: HttpContext) {
@@ -15,8 +18,17 @@ export default class ClientsController {
     response.status(HttpStatus.Created).send(await Client.create(payload))
   }
 
+  async update({ request, response, params }: HttpContext) {
+    const payload = await request.validateUsing(clientValidator)
+    const client = await Client.findOrFail(params.id)
+    const updatedClient = await client.merge({ name: payload.name, cpf: payload.cpf }).save()
+
+    response.status(HttpStatus.OK).send(updatedClient)
+  }
+
   async storeAddress({ request, response, params }: HttpContext) {
     const client = await Client.findOrFail(params.id)
+
     const validatedRequest = await request.validateUsing(addressValidator)
 
     const payload = {
@@ -29,5 +41,12 @@ export default class ClientsController {
     const newAddress = await Address.create(payload)
 
     response.status(HttpStatus.Created).send(newAddress)
+  }
+
+  async delete({ response, params }: HttpContext) {
+    const user = await Client.findOrFail(params.id)
+    await user.delete()
+
+    response.status(HttpStatus.OK).send({ message: 'client has been succesfully deleted' })
   }
 }
