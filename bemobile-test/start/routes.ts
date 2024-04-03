@@ -9,6 +9,7 @@
 
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
+const SalesController = () => import('../app/controllers/sales_controller.js')
 const ProductsController = () => import('../app/controllers/products_controller.js')
 const UsersController = () => import('../app/controllers/users_controller.js')
 const ClientsController = () => import('../app/controllers/clients_controller.js')
@@ -44,3 +45,7 @@ router
   .use(middleware.auth({ guards: ['jwt'] }))
 
 router.get('/products/:id', [ProductsController, 'show']).use(middleware.auth({ guards: ['jwt'] }))
+
+router
+  .post('/sales/:clientId/:productId', [SalesController, 'store'])
+  .use(middleware.auth({ guards: ['jwt'] }))
