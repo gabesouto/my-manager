@@ -67,8 +67,27 @@ export default class ClientsController {
     return response.status(HttpStatus.OK).send({ message: 'client has been succesfully deleted' })
   }
 
-  async show({ response, params }: HttpContext) {
+  async show({ response, params, request }: HttpContext) {
     const client = await Client.findOrFail(params.id)
+    const { month, year } = request.qs()
+
+    if (month && year) {
+      const clientSales = await client
+        .related('sale')
+        .query()
+        .whereRaw(`MONTH(created_at) = ? AND YEAR(created_at) = ?`, [month, year])
+        .orderBy('created_at', 'desc')
+
+      if (clientSales.length === 0)
+        return response.status(HttpStatus.NotFound).send({ message: 'sale not found' })
+
+      const res = {
+        client,
+        sales: clientSales,
+      }
+
+      return response.status(HttpStatus.OK).send(res)
+    }
 
     const clientSales = await client.related('sale').query().orderBy('created_at', 'desc')
 
@@ -89,8 +108,6 @@ export default class ClientsController {
       .query()
       .whereRaw(`MONTH(created_at) = ? AND YEAR(created_at) = ?`, [month, year])
       .orderBy('created_at', 'desc')
-
-    console.log(clientSales)
 
     if (clientSales.length === 0)
       return response.status(HttpStatus.NotFound).send({ message: 'sale not found' })

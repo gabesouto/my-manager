@@ -18,8 +18,8 @@ export default class SalesController {
         quantity,
         clientId: client.id,
         productId: product.id,
-        unit_price: product.price,
-        total_price: product.price * quantity,
+        unitPrice: product.price,
+        totalPrice: product.price * quantity,
       })
       .save()
 

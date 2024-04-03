@@ -20,14 +20,14 @@ export default class Sale extends BaseModel {
   declare product: BelongsTo<typeof Product>
 
   @column()
-  declare unit_price: number
+  declare unitPrice: number
 
   @column()
-  declare total_price: number
+  declare totalPrice: number
 
   @column()
   declare quantity: number
 
-  @column.date({ autoCreate: true })
+  @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 }

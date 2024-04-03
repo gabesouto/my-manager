@@ -31,10 +31,6 @@ router
   .post('/clients/:id/phones', [ClientsController, 'storePhoneNumber'])
   .use(middleware.auth({ guards: ['jwt'] }))
 
-router
-  .get('/clients/:id/sales', [ClientsController, 'showByDate'])
-  .use(middleware.auth({ guards: ['jwt'] }))
-
 router.post('/login', [UsersController, 'login'])
 router.post('/signup', [UsersController, 'signup'])
 

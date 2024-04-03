@@ -23,5 +23,5 @@ export default class Product extends BaseModel {
   declare brand: string
 
   @column()
-  declare is_deleted: boolean
+  declare isDeleted: boolean
 }

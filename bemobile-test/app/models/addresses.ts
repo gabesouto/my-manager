@@ -17,7 +17,7 @@ export default class Address extends BaseModel {
   declare city: string
 
   @column()
-  declare zip_code: string
+  declare zipCode: string
 
   @column()
   declare street: string

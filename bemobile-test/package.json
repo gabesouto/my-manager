@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "node bin/server.js",
+    "db:restart": "node ace migration:fresh && node ace db:seed",
     "build": "node ace build",
     "dev": "node ace serve --watch",
     "test": "node ace test",

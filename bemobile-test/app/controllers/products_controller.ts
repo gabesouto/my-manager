@@ -20,7 +20,7 @@ export default class ProductsController {
 
   async delete({ response, params }: HttpContext) {
     const product = await Product.findOrFail(params.id)
-    await product.merge({ is_deleted: true }).save()
+    await product.merge({ isDeleted: true }).save()
 
     return response.status(HttpStatus.OK).send({ message: 'product has been succesfully deleted' })
   }
