@@ -10,6 +10,7 @@ export default class UsersController {
     const { email, password } = await request.validateUsing(userValidator)
     const user = await User.verifyCredentials(email, password)
     const res = await auth.use('jwt').generate(user)
+
     response.status(HttpStatus.OK).send(res)
   }
 
@@ -17,6 +18,7 @@ export default class UsersController {
     const { email, password } = await request.validateUsing(userValidator)
     const user = new User()
     const res = await user.fill({ email, password }).save()
+
     response.status(HttpStatus.Created).send(res)
   }
 }

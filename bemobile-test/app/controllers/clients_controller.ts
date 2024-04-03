@@ -46,8 +46,6 @@ export default class ClientsController {
   }
 
   async storePhoneNumber({ request, response, params }: HttpContext) {
-    console.log('bateu')
-
     const client = await Client.findOrFail(params.id)
     const validatedRequest = await request.validateUsing(phoneValidator)
     const payload = {
