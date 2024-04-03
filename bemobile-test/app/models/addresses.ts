@@ -8,7 +8,7 @@ export default class Address extends BaseModel {
   declare id: number
 
   @column()
-  declare client_id: number
+  declare clientId: number
 
   @belongsTo(() => Client)
   declare client: BelongsTo<typeof Client>

@@ -10,19 +10,19 @@ export default class ProductsController {
       .select('id', 'name', 'description', 'price', 'brand')
     const productsSorted = products.sort((a, b) => a.name.localeCompare(b.name))
 
-    response.status(HttpStatus.OK).send({ data: productsSorted })
+    return response.status(HttpStatus.OK).send({ data: productsSorted })
   }
 
   async store({ request, response }: HttpContext) {
     const payload = await request.validateUsing(productValidator)
-    response.status(HttpStatus.Created).send({ data: await Product.create(payload) })
+    return response.status(HttpStatus.Created).send({ data: await Product.create(payload) })
   }
 
   async delete({ response, params }: HttpContext) {
     const product = await Product.findOrFail(params.id)
     await product.merge({ is_deleted: true }).save()
 
-    response.status(HttpStatus.OK).send({ message: 'product has been succesfully deleted' })
+    return response.status(HttpStatus.OK).send({ message: 'product has been succesfully deleted' })
   }
 
   async update({ request, response, params }: HttpContext) {
@@ -30,7 +30,7 @@ export default class ProductsController {
     const product = await Product.findOrFail(params.id)
     const updatedProduct = await product.merge({ name, brand, price, description }).save()
 
-    response.status(HttpStatus.OK).send({ data: updatedProduct })
+    return response.status(HttpStatus.OK).send({ data: updatedProduct })
   }
 
   async show({ response, params }: HttpContext) {
@@ -39,6 +39,6 @@ export default class ProductsController {
       .where('id', params.id)
       .select('id', 'name', 'description', 'price', 'brand')
 
-    response.status(HttpStatus.OK).send({ data: product })
+    return response.status(HttpStatus.OK).send({ data: product })
   }
 }

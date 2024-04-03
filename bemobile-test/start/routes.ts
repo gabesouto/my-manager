@@ -16,6 +16,7 @@ const ClientsController = () => import('../app/controllers/clients_controller.js
 
 router.post('/clients', [ClientsController, 'store']).use(middleware.auth({ guards: ['jwt'] }))
 router.get('/clients', [ClientsController, 'index']).use(middleware.auth({ guards: ['jwt'] }))
+router.get('/clients/:id', [ClientsController, 'show']).use(middleware.auth({ guards: ['jwt'] }))
 router.put('/clients/:id', [ClientsController, 'update']).use(middleware.auth({ guards: ['jwt'] }))
 
 router
@@ -28,6 +29,10 @@ router
 
 router
   .post('/clients/:id/phones', [ClientsController, 'storePhoneNumber'])
+  .use(middleware.auth({ guards: ['jwt'] }))
+
+router
+  .get('/clients/:id/sales', [ClientsController, 'showByDate'])
   .use(middleware.auth({ guards: ['jwt'] }))
 
 router.post('/login', [UsersController, 'login'])
