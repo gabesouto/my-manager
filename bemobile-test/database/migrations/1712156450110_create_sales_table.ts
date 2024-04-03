@@ -12,7 +12,7 @@ export default class extends BaseSchema {
       table.decimal('unit_price').notNullable()
       table.decimal('total_price').notNullable()
       table.integer('quantity').notNullable()
-      table.timestamp('created_at')
+      table.date('created_at')
     })
   }
 

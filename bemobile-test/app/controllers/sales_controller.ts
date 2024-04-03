@@ -16,13 +16,13 @@ export default class SalesController {
     newSale
       .fill({
         quantity,
-        client_id: client.id,
-        product_id: product.id,
+        clientId: client.id,
+        productId: product.id,
         unit_price: product.price,
         total_price: product.price * quantity,
       })
       .save()
 
-    response.status(HttpStatus.Created).send({ data: newSale })
+    return response.status(HttpStatus.Created).send({ data: newSale })
   }
 }

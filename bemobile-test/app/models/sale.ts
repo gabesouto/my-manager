@@ -9,13 +9,12 @@ export default class Sale extends BaseModel {
   declare id: number
 
   @column()
-  declare client_id: number
+  declare clientId: number
 
   @belongsTo(() => Client)
   declare client: BelongsTo<typeof Client>
-
   @column()
-  declare product_id: number
+  declare productId: number
 
   @belongsTo(() => Product)
   declare product: BelongsTo<typeof Product>
