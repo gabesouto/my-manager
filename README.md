@@ -37,7 +37,7 @@ Este projeto foi uma proposta de desafio técnico me oferecido pela Bemobile, o 
     npm install
     ```
 
-4. Inicia o banco de dados com o docker compose
+4. Inicia o banco de dados com o docker compose. Dependendo da sua versão do docker compose talvez seja necessário utilizar `docker compose` ao invés de `docker-compose`
 
     ```bash
     docker-compose up -d
@@ -49,6 +49,12 @@ Este projeto foi uma proposta de desafio técnico me oferecido pela Bemobile, o 
 
     ```bash
     npm run db:restart
+    ```
+
+7. Inicie a aplicação. a API estará disponivel em  `http://localhost:3333`   
+
+    ```bash
+    npm run dev
     ```
 
 ## Diagrama de Relacionamentos do Banco de Dados
@@ -130,6 +136,12 @@ Este projeto foi uma proposta de desafio técnico me oferecido pela Bemobile, o 
 - **MÉTODO**: GET.
 - **Descrição**: Retorna todos os produtos em ordem alfabética.
         ![get-products-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/getAllProductsExample.png)
+
+### `/products`
+
+- **MÉTODO**: POST.
+- **Descrição**: Cadastra um novo produto no banco de dados
+        ![post-products-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/createProduct.png)
 
 ### `/products/:id`
 
