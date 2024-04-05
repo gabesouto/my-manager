@@ -7,13 +7,13 @@ import { DateTime } from 'luxon'
 
 export default class Client extends BaseModel {
   @hasMany(() => Address)
-  declare address: HasMany<typeof Address>
+  declare addresses: HasMany<typeof Address>
 
   @hasMany(() => Phone)
-  declare phone: HasMany<typeof Phone>
+  declare phones: HasMany<typeof Phone>
 
   @hasMany(() => Sale)
-  declare sale: HasMany<typeof Sale>
+  declare sales: HasMany<typeof Sale>
 
   @column({ isPrimary: true })
   declare id: number

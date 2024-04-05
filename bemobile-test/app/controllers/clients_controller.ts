@@ -66,17 +66,27 @@ export default class ClientsController {
   }
 
   async show({ response, params, request }: HttpContext) {
-    const client = await Client.findOrFail(params.id)
+    const client = await Client.query()
+      .where('id', params.id)
+      .preload('addresses')
+      .preload('phones')
+      .preload('sales', (query) => {
+        query.orderBy('created_at', 'desc')
+      })
+      .firstOrFail()
+
     const { month, year } = request.qs()
 
     if (month && year) {
       const clientSales = await client
-        .related('sale')
+        .related('sales')
         .query()
         .whereRaw(`MONTH(created_at) = ? AND YEAR(created_at) = ?`, [month, year])
         .orderBy('created_at', 'desc')
 
       if (clientSales.length === 0) return response.notFound({ message: 'sale not found' })
+
+      delete client.$preloaded.sales
 
       const res = {
         client: { client, sales: clientSales },
@@ -85,19 +95,12 @@ export default class ClientsController {
       return response.ok({ data: res })
     }
 
-    const clientTest = await Client.query()
-      .where('id', params.id)
-      .preload('sale', (salesQuery) => {
-        salesQuery.orderBy('created_at', 'desc')
-      })
-      .preload('address')
-      .preload('phone')
-      .first()
-
-    if (clientTest && clientTest.sale && clientTest.sale.length === 0) {
-      delete clientTest.$preloaded.sale
-
-      return response.ok(clientTest)
+    const res = {
+      client: {
+        ...client.toJSON(),
+      },
     }
+
+    return response.ok({ data: res })
   }
 }
