@@ -8,6 +8,8 @@ export default class extends BaseSchema {
       table.increments('id').primary().notNullable()
       table.string('name').notNullable
       table.string('cpf').notNullable
+      table.dateTime('created_at')
+      table.dateTime('updated_at')
     })
   }
 

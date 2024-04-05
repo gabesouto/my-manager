@@ -12,6 +12,8 @@ export default class extends BaseSchema {
       table.string('zip_code').notNullable()
       table.string('state').notNullable()
       table.string('street').notNullable()
+      table.dateTime('created_at')
+      table.dateTime('updated_at')
     })
   }
 

@@ -6,3 +6,10 @@ export const clientValidator = vine.compile(
     cpf: vine.string().trim().maxLength(256),
   })
 )
+
+export const searchParamsValidator = vine.compile(
+  vine.object({
+    month: vine.number().min(1),
+    year: vine.number().min(2019),
+  })
+)
