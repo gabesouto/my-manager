@@ -37,7 +37,7 @@ Este projeto foi uma proposta de desafio técnico me oferecido pela Bemobile, o 
     npm install
     ```
 
-4. Inicia o banco de dados com o docker compose
+4. Inicia o banco de dados com o docker compose. Dependendo da sua versão do docker compose talvez seja necessário utilizar `docker compose` ao invés de `docker-compose`
 
     ```bash
     docker-compose up -d
