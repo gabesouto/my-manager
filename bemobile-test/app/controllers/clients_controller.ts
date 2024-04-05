@@ -1,7 +1,6 @@
 import { HttpContext } from '@adonisjs/core/http'
 import Client from '../models/clients.js'
 import { clientValidator } from '../validators/client.js'
-
 import { addressValidator } from '../validators/address.js'
 import Address from '../models/addresses.js'
 import { phoneValidator } from '../validators/phone.js'

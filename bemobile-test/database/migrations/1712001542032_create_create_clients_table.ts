@@ -6,6 +6,7 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary().notNullable()
+
       table.string('name').notNullable
       table.string('cpf').notNullable
       table.dateTime('created_at')
