@@ -51,6 +51,12 @@ Este projeto foi uma proposta de desafio técnico me oferecido pela Bemobile, o 
     npm run db:restart
     ```
 
+7. Inicie a aplicação. a API estará disponivel em  `http://localhost:3333`   
+
+    ```bash
+    npm run dev
+    ```
+
 ## Diagrama de Relacionamentos do Banco de Dados
 
  ![](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/diagramaErV2.png)
