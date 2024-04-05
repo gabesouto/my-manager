@@ -109,13 +109,13 @@ Este projeto foi uma proposta de desafio técnico me oferecido pela Bemobile, o 
 
 - **MÉTODO**: POST.
 - **Descrição**: Adiciona um endereço a um cliente.
-        ![put-client-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/updateClientExample.png)
+        ![put-client-address-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/addAddress.png)
 
 ### `/clients/:id/phones`
 
 - **MÉTODO**: POST.
 - **Descrição**: Adiciona um número de telefone a um cliente.
-        ![put-client-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/updateClientExample.png)
+        ![post-client-phone-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/addPhones.png)
 
 
 ### `/clients/:id`
