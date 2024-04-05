@@ -137,6 +137,12 @@ Este projeto foi uma proposta de desafio técnico me oferecido pela Bemobile, o 
 - **Descrição**: Retorna todos os produtos em ordem alfabética.
         ![get-products-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/getAllProductsExample.png)
 
+### `/products`
+
+- **MÉTODO**: POST.
+- **Descrição**: Cadastra um novo produto no banco de dados
+        ![post-products-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/createProduct.png)
+
 ### `/products/:id`
 
 - **MÉTODO**: GET.
