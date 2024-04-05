@@ -6,8 +6,9 @@ export default class UsersController {
   async index({}: HttpContext) {}
 
   async login({ request, auth, response }: HttpContext) {
+    const { email, password } = await request.validateUsing(userValidator)
+
     try {
-      const { email, password } = await request.validateUsing(userValidator)
       const user = await User.verifyCredentials(email, password)
       const res = await auth.use('jwt').generate(user)
 
@@ -18,8 +19,9 @@ export default class UsersController {
   }
 
   async signup({ request, response }: HttpContext) {
+    const { email, password } = await request.validateUsing(userValidator)
+
     try {
-      const { email, password } = await request.validateUsing(userValidator)
       const user = new User()
       const res = await user.fill({ email, password }).save()
 
