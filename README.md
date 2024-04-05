@@ -117,11 +117,13 @@ Este projeto foi uma proposta de desafio técnico me oferecido pela Bemobile, o 
 - **Descrição**: Adiciona um número de telefone a um cliente.
         ![put-client-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/updateClientExample.png)
 
+
 ### `/clients/:id`
 
 - **MÉTODO**: DELETE.
-- **Descrição**: Remove um cliente.
-        ![remove-client-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/deleteClientExample.png
+- **Descrição**: Remove um client.
+        ![remove-client-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/deleteClientExample.png)
+
 
 ### `/products`
 
