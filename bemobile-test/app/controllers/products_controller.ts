@@ -41,13 +41,14 @@ export default class ProductsController {
     const product = await Product.query()
       .where('id', params.id)
       .where('isDeleted', false)
-      .preload('sale')
+      .preload('sales')
       .select('id', 'name', 'description', 'price', 'brand', 'created_at', 'updated_at')
       .firstOrFail()
 
+    if (product.sales.length === 0) delete product.$preloaded.sales
+
     const res = {
       product: product.serialize(),
-      sales: product.sale,
     }
 
     return response.ok({ data: res })

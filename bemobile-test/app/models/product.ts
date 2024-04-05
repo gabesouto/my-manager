@@ -9,7 +9,7 @@ export default class Product extends BaseModel {
   declare id: number
 
   @hasMany(() => Sale)
-  declare sale: HasMany<typeof Sale>
+  declare sales: HasMany<typeof Sale>
 
   @column()
   declare name: string
