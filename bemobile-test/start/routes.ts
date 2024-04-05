@@ -19,39 +19,37 @@ router.post('/signup', [UsersController, 'signup'])
 
 router
   .group(() => {
-    router.post('/', [ClientsController, 'store']).use(middleware.auth({ guards: ['jwt'] }))
+    router.post('/', [ClientsController, 'store'])
 
-    router.get('/', [ClientsController, 'index']).use(middleware.auth({ guards: ['jwt'] }))
+    router.get('/', [ClientsController, 'index'])
 
-    router.get('/:id', [ClientsController, 'show']).use(middleware.auth({ guards: ['jwt'] }))
+    router.get('/:id', [ClientsController, 'show'])
 
-    router.put('/:id', [ClientsController, 'update']).use(middleware.auth({ guards: ['jwt'] }))
+    router.put('/:id', [ClientsController, 'update'])
 
-    router.delete('/:id', [ClientsController, 'delete']).use(middleware.auth({ guards: ['jwt'] }))
+    router.delete('/:id', [ClientsController, 'delete'])
 
-    router
-      .post('/:id/addresses', [ClientsController, 'storeAddress'])
-      .use(middleware.auth({ guards: ['jwt'] }))
+    router.post('/:id/addresses', [ClientsController, 'storeAddress'])
 
-    router
-      .post('/:id/phones', [ClientsController, 'storePhoneNumber'])
-      .use(middleware.auth({ guards: ['jwt'] }))
+    router.post('/:id/phones', [ClientsController, 'storePhoneNumber'])
   })
   .prefix('clients')
+  .use(middleware.auth({ guards: ['jwt'] }))
 
 router
   .group(() => {
-    router.post('/', [ProductsController, 'store']).use(middleware.auth({ guards: ['jwt'] }))
+    router.post('/', [ProductsController, 'store'])
 
-    router.get('/', [ProductsController, 'index']).use(middleware.auth({ guards: ['jwt'] }))
+    router.get('/', [ProductsController, 'index'])
 
-    router.delete('/:id', [ProductsController, 'delete']).use(middleware.auth({ guards: ['jwt'] }))
+    router.delete('/:id', [ProductsController, 'delete'])
 
-    router.put('/:id', [ProductsController, 'update']).use(middleware.auth({ guards: ['jwt'] }))
+    router.put('/:id', [ProductsController, 'update'])
 
-    router.get('/:id', [ProductsController, 'show']).use(middleware.auth({ guards: ['jwt'] }))
+    router.get('/:id', [ProductsController, 'show'])
   })
   .prefix('/products')
+  .use(middleware.auth({ guards: ['jwt'] }))
 
 router
   .post('/sales/:clientId/:productId', [SalesController, 'store'])

@@ -85,18 +85,19 @@ export default class ClientsController {
       return response.ok({ data: res })
     }
 
-    const clientSales = await client.related('sale').query().orderBy('created_at', 'desc')
+    const clientTest = await Client.query()
+      .where('id', params.id)
+      .preload('sale', (salesQuery) => {
+        salesQuery.orderBy('created_at', 'desc')
+      })
+      .preload('address')
+      .preload('phone')
+      .first()
 
-    const clientAddresses = await client.related('address').query()
+    if (clientTest && clientTest.sale && clientTest.sale.length === 0) {
+      delete clientTest.$preloaded.sale
 
-    const clientPhoneNumbers = await client.related('phone').query()
-
-    if (clientSales.length === 0) return response.ok({ data: client })
-
-    const res = {
-      data: { client, sales: clientSales, adresses: clientAddresses, numbers: clientPhoneNumbers },
+      return response.ok(clientTest)
     }
-
-    return response.ok(res)
   }
 }
