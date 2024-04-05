@@ -28,16 +28,29 @@ export default class ProductsController {
   async update({ request, response, params }: HttpContext) {
     const { name, brand, price, description } = await request.validateUsing(productValidator)
     const product = await Product.findOrFail(params.id)
-    const res = await product.merge({ name, brand, price, description }).save()
+    await product.merge({ name, brand, price, description }).save()
 
-    return response.ok({ data: res })
+    const productSelectedRows = await Product.query()
+      .where('id', params.id)
+      .select('id', 'name', 'description', 'price', 'brand', 'created_at', 'updated_at')
+
+    return response.ok({ data: productSelectedRows })
   }
 
   async show({ response, params }: HttpContext) {
-    const res = await Product.query()
-      .where('is_deleted', false)
+    const productExist = await Product.findOrFail(params.id)
+    const productsSales = await productExist.related('sale').query()
+
+    if (productExist.isDeleted) return response.notFound({ message: 'product not found' })
+
+    const product = await Product.query()
       .where('id', params.id)
-      .select('id', 'name', 'description', 'price', 'brand')
+      .select('id', 'name', 'description', 'price', 'brand', 'created_at', 'updated_at')
+
+    const res = {
+      product,
+      sales: productsSales,
+    }
 
     return response.ok({ data: res })
   }
