@@ -11,6 +11,8 @@ export default class SalesController {
 
     const { quantity } = await request.validateUsing(saleValidator)
 
+    const totalPrice = Number((product.price * quantity).toFixed(2))
+
     const res = new Sale()
     res
       .fill({
@@ -18,7 +20,7 @@ export default class SalesController {
         clientId: client.id,
         productId: product.id,
         unitPrice: product.price,
-        totalPrice: product.price * quantity,
+        totalPrice,
       })
       .save()
 
