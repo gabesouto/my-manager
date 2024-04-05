@@ -12,6 +12,8 @@ export default class extends BaseSchema {
       table.decimal('price').notNullable()
       table.string('brand').notNullable()
       table.boolean('is_deleted').notNullable().defaultTo(false)
+      table.dateTime('created_at')
+      table.dateTime('updated_at')
     })
   }
 
