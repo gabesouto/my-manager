@@ -3,7 +3,6 @@ import Product from '../models/product.js'
 import Client from '../models/clients.js'
 import { saleValidator } from '../validators/sale.js'
 import Sale from '../models/sale.js'
-import HttpStatus from '../helpers/http_status_enum.js'
 
 export default class SalesController {
   async store({ request, response, params }: HttpContext) {
@@ -12,8 +11,8 @@ export default class SalesController {
 
     const { quantity } = await request.validateUsing(saleValidator)
 
-    const newSale = new Sale()
-    newSale
+    const res = new Sale()
+    res
       .fill({
         quantity,
         clientId: client.id,
@@ -23,6 +22,6 @@ export default class SalesController {
       })
       .save()
 
-    return response.status(HttpStatus.Created).send({ data: newSale })
+    return response.created({ data: res })
   }
 }
