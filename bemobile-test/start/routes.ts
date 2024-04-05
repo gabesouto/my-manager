@@ -14,38 +14,44 @@ const ProductsController = () => import('../app/controllers/products_controller.
 const UsersController = () => import('../app/controllers/users_controller.js')
 const ClientsController = () => import('../app/controllers/clients_controller.js')
 
-router.post('/clients', [ClientsController, 'store']).use(middleware.auth({ guards: ['jwt'] }))
-router.get('/clients', [ClientsController, 'index']).use(middleware.auth({ guards: ['jwt'] }))
-router.get('/clients/:id', [ClientsController, 'show']).use(middleware.auth({ guards: ['jwt'] }))
-router.put('/clients/:id', [ClientsController, 'update']).use(middleware.auth({ guards: ['jwt'] }))
-
-router
-  .delete('/clients/:id', [ClientsController, 'delete'])
-  .use(middleware.auth({ guards: ['jwt'] }))
-
-router
-  .post('/clients/:id/addresses', [ClientsController, 'storeAddress'])
-  .use(middleware.auth({ guards: ['jwt'] }))
-
-router
-  .post('/clients/:id/phones', [ClientsController, 'storePhoneNumber'])
-  .use(middleware.auth({ guards: ['jwt'] }))
-
 router.post('/login', [UsersController, 'login'])
 router.post('/signup', [UsersController, 'signup'])
 
-router.post('/products', [ProductsController, 'store']).use(middleware.auth({ guards: ['jwt'] }))
-router.get('/products', [ProductsController, 'index']).use(middleware.auth({ guards: ['jwt'] }))
+router
+  .group(() => {
+    router.post('/', [ClientsController, 'store']).use(middleware.auth({ guards: ['jwt'] }))
+
+    router.get('/', [ClientsController, 'index']).use(middleware.auth({ guards: ['jwt'] }))
+
+    router.get('/:id', [ClientsController, 'show']).use(middleware.auth({ guards: ['jwt'] }))
+
+    router.put('/:id', [ClientsController, 'update']).use(middleware.auth({ guards: ['jwt'] }))
+
+    router.delete('/:id', [ClientsController, 'delete']).use(middleware.auth({ guards: ['jwt'] }))
+
+    router
+      .post('/:id/addresses', [ClientsController, 'storeAddress'])
+      .use(middleware.auth({ guards: ['jwt'] }))
+
+    router
+      .post('/:id/phones', [ClientsController, 'storePhoneNumber'])
+      .use(middleware.auth({ guards: ['jwt'] }))
+  })
+  .prefix('clients')
 
 router
-  .delete('/products/:id', [ProductsController, 'delete'])
-  .use(middleware.auth({ guards: ['jwt'] }))
+  .group(() => {
+    router.post('/', [ProductsController, 'store']).use(middleware.auth({ guards: ['jwt'] }))
 
-router
-  .put('/products/:id', [ProductsController, 'update'])
-  .use(middleware.auth({ guards: ['jwt'] }))
+    router.get('/', [ProductsController, 'index']).use(middleware.auth({ guards: ['jwt'] }))
 
-router.get('/products/:id', [ProductsController, 'show']).use(middleware.auth({ guards: ['jwt'] }))
+    router.delete('/:id', [ProductsController, 'delete']).use(middleware.auth({ guards: ['jwt'] }))
+
+    router.put('/:id', [ProductsController, 'update']).use(middleware.auth({ guards: ['jwt'] }))
+
+    router.get('/:id', [ProductsController, 'show']).use(middleware.auth({ guards: ['jwt'] }))
+  })
+  .prefix('/products')
 
 router
   .post('/sales/:clientId/:productId', [SalesController, 'store'])
