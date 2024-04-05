@@ -79,12 +79,24 @@ export default class ClientsController {
       if (clientSales.length === 0) return response.notFound({ message: 'sale not found' })
 
       const res = {
-        client: { ...client, sales: clientSales },
+        client: { client, sales: clientSales },
       }
 
       return response.ok({ data: res })
     }
 
-    return response.ok({ data: client })
+    const clientSales = await client.related('sale').query().orderBy('created_at', 'desc')
+
+    const clientAddresses = await client.related('address').query()
+
+    const clientPhoneNumbers = await client.related('phone').query()
+
+    if (clientSales.length === 0) return response.ok({ data: client })
+
+    const res = {
+      data: { client, sales: clientSales, adresses: clientAddresses, numbers: clientPhoneNumbers },
+    }
+
+    return response.ok(res)
   }
 }
