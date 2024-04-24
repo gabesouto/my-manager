@@ -1,6 +1,6 @@
-# Bemobile Test Técnico - API Rest
+# My Manager - API Rest
 
-Este projeto foi uma proposta de desafio técnico me oferecido pela Bemobile, o projeto consiste em um API de gerenciamento de clientes e vendas, sendo possível fazer cadastro de usuários, login de usuários com autenticação,     cadastro, edição e exclusão de clientes, produtos e vendas
+0 Sistema consiste em um API de gerenciamento de clientes e vendas, sendo possível fazer cadastro de usuários, login de usuários com autenticação, cadastro, edição e exclusão de clientes, produtos e vendas
 
 
 ## Funcionalidades
