@@ -59,7 +59,7 @@
 
 ## Diagrama de Relacionamentos do Banco de Dados
 
- ![](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/diagramaErV2.png)
+ ![](https://github.com/gabesouto/my-manager/blob/main/my-manager/public/images/diagramaErV2.png)
 
 
 ## Rotas
@@ -68,13 +68,13 @@
 
 - **MÉTODO**: POST.
 - **Descrição**: Cadastra um novo usuário e retorna os dados referentes ao novo usuário.
-        ![signuo-user-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/signupExample.png)
+        ![signuo-user-example](https://github.com/gabesouto/my-manager/blob/main/my-manager/public/images/signupExample.png)
 
 ### `/login`
 
 - **MÉTODO**: POST.
 - **Descrição**: Loga um usuário e retorna um token de autenticação.
-        ![login-user-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/loginExample.png)
+        ![login-user-example](https://github.com/gabesouto/my-manager/blob/main/my-manager/public/images/loginExample.png)
 
 ## Rotas com autenticação JWT
 
@@ -84,76 +84,76 @@
 
 - **MÉTODO**: GET.
 - **Descrição**: Retorna todos os clientes cadastrados.
-        ![get-clients-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/getAllClientsExample.png)
+        ![get-clients-example](https://github.com/gabesouto/my-manager/blob/main/my-manager/public/images/getAllClientsExample.png)
   
 ### `/clients`
 
 - **MÉTODO**: POST.
 - **Descrição**: Cadastra um novo client.
-        ![post-clients-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/createClientExample.png)
+        ![post-clients-example](https://github.com/gabesouto/my-manager/blob/main/my-manager/public/images/createClientExample.png)
 
 
 ### `/clients/:id`
 
 - **MÉTODO**: GET.
 - **Descrição**: Recupera o cliente referente ao id da url.
-        ![get-client-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/getClientByIdExample.png)
+        ![get-client-example](https://github.com/gabesouto/my-manager/blob/main/my-manager/public/images/getClientByIdExample.png)
 
 ### `/clients/:id?month=MM&year=YYYY`
 
 - **MÉTODO**: GET.
 - **Descrição**: Retorna os dados de um cliente e as suas vendas filtradas pelo mês e ano. No momento de fazer o request altere "MM" E "YYYY" para as datas que deseja filtrar
-        ![get-sales-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/getClientsSalesByDate.png)
+        ![get-sales-example](https://github.com/gabesouto/my-manager/blob/main/my-manager/public/images/getClientsSalesByDate.png)
 
 ### `/clients/:id`
 
 - **MÉTODO**: PUT.
 - **Descrição**: Atualiza os dados de um cliente.
-        ![put-client-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/updateClientExample.png)
+        ![put-client-example](https://github.com/gabesouto/my-manager/blob/main/my-manager/public/images/getClientByIdExample.png)
 
 ### `/clients/:id/addresses`
 
 - **MÉTODO**: POST.
 - **Descrição**: Adiciona um endereço a um cliente.
-        ![put-client-address-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/addAddress.png)
+        ![put-client-address-example](https://github.com/gabesouto/my-manager/blob/main/my-manager/public/images/addAddress.png)
 
 ### `/clients/:id/phones`
 
 - **MÉTODO**: POST.
 - **Descrição**: Adiciona um número de telefone a um cliente.
-        ![post-client-phone-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/addPhones.png)
+        ![post-client-phone-example](https://github.com/gabesouto/my-manager/blob/main/my-manager/public/images/addPhones.png)
 
 
 ### `/clients/:id`
 
 - **MÉTODO**: DELETE.
 - **Descrição**: Remove um client.
-        ![remove-client-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/deleteClientExample.png)
+        ![remove-client-example](https://github.com/gabesouto/my-manager/blob/main/my-manager/public/images/deleteClientExample.png)
 
 
 ### `/products`
 
 - **MÉTODO**: GET.
 - **Descrição**: Retorna todos os produtos em ordem alfabética.
-        ![get-products-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/getAllProductsExample.png)
+        ![get-products-example](https://github.com/gabesouto/my-manager/blob/main/my-manager/public/images/getAllProductsExample.png)
 
 ### `/products`
 
 - **MÉTODO**: POST.
 - **Descrição**: Cadastra um novo produto no banco de dados
-        ![post-products-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/createProduct.png)
+        ![post-products-example](https://github.com/gabesouto/my-manager/blob/main/my-manager/public/images/createProduct.png)
 
 ### `/products/:id`
 
 - **MÉTODO**: GET.
 - **Descrição**: Retorna o produto referente ao id da url.
-        ![get-product-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/getProductByIdExample.png)
+        ![get-product-example](https://github.com/gabesouto/my-manager/blob/main/my-manager/public/images/getProductByIdExample.png)
 
 ### `/products/:id`
 
 - **MÉTODO**: PUT.
 - **Descrição**: Atualiza o produto referente ao id da url.
-        ![put-product-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/updateProduct.png)
+        ![put-product-example](https://github.com/gabesouto/my-manager/blob/main/my-manager/public/images/updateProduct.png)
 
 
 ### `/products/:id`
@@ -161,10 +161,10 @@
 - **MÉTODO**: DELETE.
 - **Descrição**: Realiza um soft delete no produto referente ao id.
   
-     ![put-product-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/updateProduct.png)
+     ![put-product-example](https://github.com/gabesouto/my-manager/blob/main/my-manager/public/images/updateProduct.png)
 
 ### `/sales/:clientId/:productId`
 
 - **MÉTODO**: POST.
 - **Descrição**: Cadastra uma venda a um cliente.
-        ![post-sale-example](https://github.com/gabesouto/bemobile-test-tecnico/blob/main/bemobile-test/public/images/createSale.png)
+        ![post-sale-example](https://github.com/gabesouto/my-manager/blob/main/my-manager/public/images/createSale.png)
