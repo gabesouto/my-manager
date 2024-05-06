@@ -1,6 +1,6 @@
 # My Manager - API Rest
 
-0 Sistema consiste em um API de gerenciamento de clientes e vendas, sendo possível fazer cadastro de usuários, login de usuários com autenticação, cadastro, edição e exclusão de clientes, produtos e vendas
+O Sistema consiste em um API de gerenciamento de clientes e vendas, sendo possível fazer cadastro de usuários, login de usuários com autenticação, cadastro, edição e exclusão de clientes, produtos e vendas
 
 
 ## Funcionalidades
