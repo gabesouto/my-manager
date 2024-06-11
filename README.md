@@ -22,13 +22,13 @@ O Sistema consiste em um API de gerenciamento de clientes e vendas, sendo possí
 1. Clone o repositório
 
     ```bash
-   git clone git@github.com:gabesouto/bemobile-test-tecnico.git
+   git clone git@github.com:gabesouto/my-manager.git
     ```
 
 2. Navegue para o repositório
 
     ```bash
-    cd bemobile-test-tecnico/bemobile-test
+    cd my-manager
     ```
 
 3. Instale as depêndencias
